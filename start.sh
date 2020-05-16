@@ -17,33 +17,29 @@ fi
 
 }
 
+function bootstrap_ansible {
+
+    sudo easy_install pip
+    sudo pip install ansible
+
+}
+
 if [ $1 == "uninstall" ]; then
     uninstall
 fi
 
+bootstrap_ansible
+
 echo "==========================================="
-echo "Setting up your mac using daemonza/setupmac"
+echo "Setting up your mac using lambchop4prez/setupmac"
 echo "==========================================="
 
-sudo easy_install pip
-sudo easy_install ansible
-
-installdir="/tmp/setupmac-$RANDOM"
-mkdir $installdir
-
-git clone https://github.com/daemonza/setupmac.git $installdir 
-if [ ! -d $installdir ]; then
-    echo "failed to find setupmac."
-    echo "git cloned failed"
-    exit 1
-else
-    cd $installdir 
+# is ansible-playbook installed?
+if [ -x "$(command -v ansible-playbook)" ]; then
     ansible-playbook -i ./hosts playbook.yml --verbose
 fi
 
 echo "cleaning up..."
-
-rm -Rfv /tmp/$installdir
 
 echo "and we are done! Enjoy!"
 
