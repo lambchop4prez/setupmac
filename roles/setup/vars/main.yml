@@ -24,6 +24,8 @@ applications:
   - terraform
   - minikube
   - node
+  - tmux
+  - terraform
 
 # homebrew cask applications
 cask_applications:
@@ -34,6 +36,7 @@ cask_applications:
   - caffeine
   - docker
   - vagrant
+  - packer
   - emacs
   - alfred
   - virtualbox
@@ -43,6 +46,9 @@ cask_applications:
   - visual-studio-code
   - visual-studio
   - discord
+  - postman
+  - powershell
+
 
 npm_modules:
   - protractor
